@@ -1,6 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/trenlop/state_example/list_example/app_state.dart';
+import 'package:myapp/trenlop/state_example/list_example/qlgiohang.dart';
 import 'package:provider/provider.dart';
 import 'package:badges/badges.dart' as badges;
 
@@ -31,6 +34,10 @@ class GioHangHomePage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 20),
             child: badges.Badge(
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const GioHang()));
+              },
               badgeContent: Text("${c.gioHang.length}"),
               child: const Icon(Icons.shopping_bag_outlined),
             ),
@@ -41,6 +48,7 @@ class GioHangHomePage extends StatelessWidget {
         itemBuilder: (context, index) {
           return ListTile(
             title: Text(c.dssp[index]),
+            subtitle: Text("Giá: ${c.cost[index]}.000đ"),
             trailing: IconButton(
               icon: c.kiemTraMH_CoTrongGH(index) == false
                   ? const Icon(Icons.add)

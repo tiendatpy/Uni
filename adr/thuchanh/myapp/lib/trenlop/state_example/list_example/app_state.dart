@@ -15,6 +15,20 @@ class AppGioHangState extends ChangeNotifier {
     "Oi",
     "Me"
   ];
+  final List<int> cost = [
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    800,
+    900,
+    1000,
+    100,
+    500,
+    400
+  ];
   final List<int> _gioHang = [];
   final int _soLuongMHGH = 0;
   List<String> get dssp => _dssp;
@@ -36,7 +50,7 @@ class AppGioHangState extends ChangeNotifier {
     return false;
   }
 
-  xoaVaoGioHang(int index) {
+  xoaGioHang(int index) {
     gioHang.removeAt(index);
     notifyListeners();
   }

@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:myapp/listview.dart';
 import 'package:myapp/route.dart';
 import 'package:myapp/trenlop/couter_state.dart';
+import 'package:myapp/trenlop/form_example/page_form_mathang.dart';
 import 'package:myapp/trenlop/page_counter.dart';
 import 'package:myapp/trenlop/state_example/list_example/giohang_app.dart';
 
@@ -24,6 +24,8 @@ class PageHome2 extends StatelessWidget {
                 label: "My State", destination: const CounterStateProvider()),
             _buildButton(context,
                 label: "List trái cây", destination: const GioHangApp()),
+            _buildButton(context,
+                label: "Form", destination: PageFormMatHang()),
           ]),
         ),
       ),
