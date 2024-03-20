@@ -3,22 +3,18 @@ package creational.singleTon.test;
 import java.util.Random;
 
 public class MySingleton {
-//    khai bao bien
     private static MySingleton instance;
-//    phuong thuc khoi tao private hoac protected
-    int index;
-    protected MySingleton(int index){
-        this.index = index;
-    }
-//    phuong thuc tinh dung de tra ve bien instance
+    private int index;
+    private MySingleton(int index)
+    {this.index = index;};
     public static MySingleton getInstance(){
         if(instance == null){
             var rand = new Random();
-            instance = new MySingleton(rand.nextInt(1,4));
+            instance = new MySingleton(rand.nextInt(1, 3));
         }
         return instance;
     }
     public void SaysHi(){
-        System.out.println("Hello" + index);
+        System.out.println("Hello tien dat " + index);
     }
 }

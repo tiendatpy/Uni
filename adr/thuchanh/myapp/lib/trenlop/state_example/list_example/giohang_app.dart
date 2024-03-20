@@ -30,6 +30,7 @@ class GioHangHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Fruit Store'),
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20),

@@ -7,6 +7,10 @@ public class Context{
         this.tinh_type = tinh;
         return this;
     }
+
+    public Context() {
+    }
+
     public float tinh(float a, float b){
         return tinh_type.tinh(a,b);
     }

@@ -15,6 +15,6 @@ public class Nhan extends BieuThucDecorator{
 
     @Override
     public String BieuThuc() {
-        return "(" + bt.BieuThuc() + " * " + ")" + toanHang ;
+        return "(" + bt.BieuThuc() + ")" + " * " + toanHang ;
     }
 }
