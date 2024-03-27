@@ -8,6 +8,6 @@ public class MainComputer {
                 .addStorage("2TB NVMe5 Samsung")
                 .addScreen("24 inch RBG 360Hz")
                 .build();
-        System.out.println(c.toString());
+        System.out.println(c);
     }
 }

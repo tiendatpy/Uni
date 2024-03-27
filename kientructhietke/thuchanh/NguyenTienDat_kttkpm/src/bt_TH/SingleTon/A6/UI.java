@@ -4,7 +4,6 @@ public class UI {
     public void addSP(String maSanPham, String tenSanPham, int soLuong, double donGia){
         DataAccess.getInstance().addSP(new SanPham(maSanPham, tenSanPham, soLuong, donGia));
     }
-
     public void removeSP(String maSP){
         DataAccess.getInstance().delete(maSP);
     }

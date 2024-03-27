@@ -1,6 +1,6 @@
 package creational.factory;
 
-public class VN_HaiSanPizza extends Pizza{
+public class HaiSanPizza extends Pizza{
     @Override
     void prepare() {
         builder.append("Bột gạo và 4 con cá cơm");

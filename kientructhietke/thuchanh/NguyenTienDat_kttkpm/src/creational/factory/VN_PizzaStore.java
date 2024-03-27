@@ -5,10 +5,10 @@ public class VN_PizzaStore extends PizzaStore{
     Pizza createPizza(PizzaType p) {
         switch (p){
             case HAISAN -> {
-                return new VN_HaiSanPizza();
+                return new HaiSanPizza();
             }
             case BO -> {
-                return new VN_HaiSanPizza();
+                return new BoPizza();
             }
         }
         return null;

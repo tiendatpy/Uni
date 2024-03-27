@@ -1,0 +1,51 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class NhanVienF88
+class ChuTich
+class NhanVien
+NhanVienF88 <|--- ChuTich
+NhanVienF88 <|---- NhanVien
+NhanVien --> NhanVienF88: capTren
+MainF88 "*" <... NhanVienF88
+abstract class NhanVienF88{
+    String hoTen;
+    String chucVu;
+    int hanMucXuLyVay;
+    +{abstract} NhanVienF88 capCaoHon(NhanVienF88 nv)
+    + {abstract} String xuLyKhoanVay(int tienVay)
+}
+class NhanVien {
+    + String xuLyKhoanVay(int tienVay)
+}
+note right of NhanVien::xuLyKhoanVay
+    - Kiểm tra nếu tienVay <= hanMucXuLyVay
+        trả về: Chức vụ tên xử lý khoản hanMucXuLyVay
+        (VD: Bảo vệ Việt xử lý khoản vay 500000)
+    ngược lại chuyển xuLyKhoanVay cho cấp trên
+end note
+
+class ChuTich{
+    + String xuLyKhoanVay(int tienVay))
+}
+
+note right of ChuTich::xuLyKhoanVay
+    - Kiểm tra nếu tienVay < hanMucXuLyVay
+        trả về: Chức vụ tên xử lý khoản hanMucXuLyVay
+        (VD: Chủ tịch xử lý khoản vay 500000)
+    ngược lại thông báo "Không cho vay được"
+end note
+
+note right of NhanVienF88::capCaoHon
+    gán nv cho biến
+    trả về capTren
+    *Chú ý: Đối với chủ tịch thì không cài đặt
+end note
+
+note right of MainF88
+    + Tạo đối tượng NhanVienF88 thuộc lớp NhanVien
+    + Tạo một đối tượng NhanVienF88 thuộc lớp ChuTich
+    + Kết nối chuỗi các đối tợng
+    + Gọi pt XuLYKhoanVay trên đối tượng đầu tiên của chuỗi
+end note
+@enduml
