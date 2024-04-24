@@ -3,7 +3,7 @@ import 'dart:math';
 void main() async {
   List<String> lst = ["táo", "dưa chuột", "dưa leo", "cam"];
   List<int> lstInt = lst.map((cd) => cd.length).toList();
-  print(lstInt); //bai 1
+  // print(lstInt); //bai 1
   //bai 2
   lstInt.forEach((e) => {print(e*e)},);
   print("Đợi");

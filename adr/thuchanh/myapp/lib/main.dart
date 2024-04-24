@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
@@ -22,10 +22,10 @@ class MyApp extends StatelessWidget {
         home: const PageHome());
   }
 }
-// GetX
-// khác nhau giữa GetX/Obs:
-// khi trạng thái thay đổi thì tất cả các widget thay đổi theo thì sử dụng Obs
-// ta có nhiều controller và mỗi widget chỉ sử dụng 1 controller thì sử dụng getX
+// * GetX
+// * khác nhau giữa GetX/Obs:
+// * khi trạng thái thay đổi thì tất cả các widget thay đổi theo thì sử dụng Obs
+// * ta có nhiều controller và mỗi widget chỉ sử dụng 1 controller thì sử dụng getX
 // =================================================================
-// Dependency
-// permament = true thì giữ lại
+// * Dependency
+// * permament = true thì giữ lại

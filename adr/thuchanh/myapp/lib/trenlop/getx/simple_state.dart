@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 class Controller2 extends GetxController {
   int _counter = 0;
   int get counter => _counter;
-  // static Controller2 get({String? tag}) => Get.find(tag: tag);
+  static Controller2 get(String tag) => Get.find(tag: tag);
   void tang1() {
     _counter++;
     update(["01"]);
@@ -17,8 +17,8 @@ class Controller2 extends GetxController {
 }
 
 class PageSimpleState extends StatelessWidget {
-  PageSimpleState({super.key});
-  final c = Get.put(Controller2(), tag: "tag", permanent: true);
+  const PageSimpleState({super.key});
+  // final c = Get.put(Controller2(), "tag", permanent: true);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,14 +35,14 @@ class PageSimpleState extends StatelessWidget {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    Get.find<Controller2>(tag: "tag").tang1();
+                    Controller2.get("tag").tang1();
                   },
                   child: const Text("+ 01"),
                 ),
                 const SizedBox(width: 15),
                 GetBuilder(
-                  init: c,
-                  // tag: "tag",
+                  init: Controller2.get("tag"),
+                  tag: "tag",
                   id: "01",
                   builder: (controller) => Text("${controller.counter}"),
                 ),
@@ -53,14 +53,14 @@ class PageSimpleState extends StatelessWidget {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    Get.find<Controller2>(tag: "tag").tang2();
+                    Controller2.get("tag").tang2();
                   },
                   child: const Text("+ 02"),
                 ),
                 const SizedBox(width: 15),
                 GetBuilder(
-                  init: c,
-                  // tag: "tag",
+                  init: Controller2.get("tag"),
+                  tag: "tag",
                   id: "02",
                   builder: (controller) => Text("${controller.counter}"),
                 ),
@@ -87,6 +87,39 @@ class PageNext extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Route Management Demo"),
+      ),
+    );
+  }
+}
+
+//------------------------------------------------------------------------------------------------
+// binding
+class SimpleStateBindings extends Bindings {
+  @override
+  void dependencies() {
+    Get.put(Controller2(), permanent: true, tag: "tag");
+  }
+}
+
+class SimpleStateHome extends StatelessWidget {
+  const SimpleStateHome({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Binding demo"),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Get.to(
+              const PageSimpleState(),
+              binding: SimpleStateBindings(),
+            );
+          },
+          child: const Text("Simple state"),
+        ),
       ),
     );
   }

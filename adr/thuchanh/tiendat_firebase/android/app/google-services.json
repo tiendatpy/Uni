@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "964725434305",
+    "project_id": "tiendat-firebase-d1499",
+    "storage_bucket": "tiendat-firebase-d1499.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:964725434305:android:45c794494a68d02c55b140",
+        "android_client_info": {
+          "package_name": "com.example.tiendat_firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBca5GhbJSJdBxjz2Jg9q8xSRxcphJGmBM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/thuchanh/th_adr/commerial_app/FruitStoreHome.dart';
 import 'package:myapp/thuchanh/th_adr/drawer.dart';
 import 'package:myapp/thuchanh/th_adr/page_profile.dart';
 
@@ -19,6 +20,8 @@ class Page_ThucHanh extends StatelessWidget {
                 label: "Profile", destination: const PageProfile()),
             _buildButton(context,
                 label: "Drawer", destination: const DrawerExample()),
+            _buildButton(context,
+                label: "Ecommerce App", destination: const AppFruitStore()),
           ]),
         ),
       ),

@@ -181,54 +181,6 @@ class _PageProfileState extends State<PageProfile> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       drawer: Drawer(
-        // child: ListView(
-        //   children: <Widget>[
-        //     DrawerHeader(
-        //       decoration: const BoxDecoration(color: Colors.amber),
-        //       child: Column(
-        //         crossAxisAlignment: CrossAxisAlignment.start,
-        //         children: [
-        //           SizedBox(
-        //             height: 50,
-        //             width: 50,
-        //             child: Image.asset(
-        //               "assets/images/saotho.jpg",
-        //             ),
-        //           ),
-        //           const Text('XYZ'),
-        //           const Text(
-        //             'Drawer header',
-        //             style: TextStyle(fontSize: 30, color: Colors.blueAccent),
-        //           )
-        //         ],
-        //       ),
-        //     ),
-        //     const ListTile(
-        //       leading: Icon(Icons.message),
-        //       hoverColor: Colors.black,
-        //       title: Text(
-        //         "Message",
-        //         style: TextStyle(fontSize: 20),
-        //       ),
-        //     ),
-        //     const ListTile(
-        //       leading: Icon(Icons.account_circle),
-        //       hoverColor: Colors.black,
-        //       title: Text(
-        //         "User",
-        //         style: TextStyle(fontSize: 20),
-        //       ),
-        //     ),
-        //     const ListTile(
-        //       leading: Icon(Icons.settings),
-        //       hoverColor: Colors.black,
-        //       title: Text(
-        //         "Settings",
-        //         style: TextStyle(fontSize: 20),
-        //       ),
-        //     )
-        //   ],
-        // ),
         child: Column(
           children: [
             const UserAccountsDrawerHeader(

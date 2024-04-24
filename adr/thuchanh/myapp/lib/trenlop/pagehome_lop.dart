@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:myapp/trenlop/getx/simple_state.dart';
+import 'package:myapp/trenlop/json_list/page_list_photo.dart';
 import 'package:myapp/trenlop/router_example/route.dart';
 import 'package:myapp/trenlop/state_example/counter_exam/couter_state.dart';
 import 'package:myapp/trenlop/form_example/page_form_mathang.dart';
@@ -37,7 +38,12 @@ class Page_lop extends StatelessWidget {
             _buildButton(context,
                 label: "Giỏ hàng getx", destination: GioHangGetX()),
             _buildButton(context,
-                label: "Simple state getx", destination: PageSimpleState()),
+                label: "Simple state getx",
+                destination: const PageSimpleState()),
+            _buildButton(context,
+                label: "Bindings demo", destination: const SimpleStateHome()),
+            _buildButton(context,
+                label: "Json demo", destination: const PagePhotos()),
           ]),
         ),
       ),
