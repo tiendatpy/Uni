@@ -1,10 +1,10 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 import 'package:myapp/thuchanh/th_adr/commerial_app/controller.dart';
 import 'package:myapp/thuchanh/th_adr/commerial_app/models.dart';
+import 'package:myapp/trenlop/state_example/list_example/qlgiohang.dart';
 
 class QLGioHang extends StatelessWidget {
   const QLGioHang({super.key});
@@ -49,6 +49,11 @@ class QLGioHang extends StatelessWidget {
                       final ghItem = controller.gioHang[index];
                       final fruit = controller.getIdFromCard(ghItem);
                       if (fruit != null) {
+                        int price() {
+                          controller.update(["gh1"]);
+                          return ghItem.sl * controller.dssp[index].gia;
+                        }
+
                         return Slidable(
                           endActionPane: ActionPane(
                             motion: const BehindMotion(),
@@ -91,7 +96,13 @@ class QLGioHang extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   IconButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        if (ghItem.sl > 1) {
+                                          ghItem.sl--;
+                                          controller.update(["gh1"]);
+                                          print("${ghItem.idSP}: ${ghItem.sl}");
+                                        }
+                                      },
                                       icon: const Icon(Icons.remove)),
                                   Text(
                                     "${ghItem.sl}",
@@ -99,11 +110,19 @@ class QLGioHang extends StatelessWidget {
                                   ),
                                   IconButton(
                                       onPressed: () {
-                                        if (ghItem.sl > 1) {
-                                          ghItem.sl++;
-                                        }
+                                        ghItem.sl++;
+                                        controller.update(["gh1"]);
+                                        print("${ghItem.idSP}: ${ghItem.sl}");
                                       },
                                       icon: const Icon(Icons.add)),
+                                  const SizedBox(width: 20),
+                                  const Text(
+                                    "Tổng: ",
+                                    style: TextStyle(
+                                        color: Colors.red,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold),
+                                  ),
                                 ],
                               )
                             ],
@@ -124,12 +143,14 @@ class QLGioHang extends StatelessWidget {
     );
   }
 
-  // int? price(){
+  // int sum() {
   //   int sum = 0;
-  //   for(var fruit in _gioHang){
-  //     sum += fruit
+  //   for (var item in controller.gioHang) {
+  //     sum += (item.sl * controller.dssp[index].gia);
   //   }
-
+  //   controller.update(["gh1"]);
+  //   print(sum);
+  //   return sum;
   // }
 
   Future<dynamic> alert(BuildContext context, String title, String content) {
