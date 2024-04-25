@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:myapp/thuchanh/th_adr/commerial_app/models.dart';
 
@@ -26,12 +27,15 @@ class AppDataController extends GetxController {
       }
     }
     _gioHang.add(GH_Item(idSP: f.id, sl: 1));
+    update(["gh1"]);
+
+    // * test
     print("Đã thêm vào giỏ");
     for (var fruit in gioHang) {
       print("id: ${fruit.idSP} + " "sl: ${fruit.sl}");
     }
     print("Số lượng item:" "${gioHang.length}");
-    update(["gh1"]);
+    // *end test
   }
 
   xoaItem(Fruit f) {

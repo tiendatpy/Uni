@@ -10,7 +10,6 @@ class MyFirebaseConnect extends StatefulWidget {
 
   const MyFirebaseConnect(
       {super.key,
-      //Key? key,
       required this.errorMessage,
       required this.connectingMessage,
       required this.builder});
@@ -22,29 +21,9 @@ class MyFirebaseConnect extends StatefulWidget {
 class _MyFirebaseConnectState extends State<MyFirebaseConnect> {
   bool ketNoi = false;
   bool loi = false;
+
   @override
   Widget build(BuildContext context) {
-    khoiTaoFirebase() {
-      Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
-          .then((value) {
-        setState(() {
-          ketNoi = true;
-        });
-      }).catchError((error) {
-        setState(() {
-          loi = true;
-        });
-      }).whenComplete(() {
-        print("Ket noi thanh cong");
-      });
-    }
-
-    @override
-    void initState() {
-      super.initState();
-      khoiTaoFirebase();
-    }
-
     if (loi) {
       print(123);
       return Container(
@@ -78,5 +57,26 @@ class _MyFirebaseConnectState extends State<MyFirebaseConnect> {
     } else {
       return widget.builder(context);
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _khoiTaoFirebase();
+  }
+
+  _khoiTaoFirebase() {
+    Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
+        .then((value) {
+      setState(() {
+        ketNoi = true;
+      });
+    }).catchError((error) {
+      setState(() {
+        loi = true;
+      });
+    }).whenComplete(() {
+      print("Ket noi thanh cong");
+    });
   }
 }
