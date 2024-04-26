@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/thuchanh/th_adr/commerial_app/FruitStoreHome.dart';
 import 'package:myapp/thuchanh/th_adr/drawer.dart';
 import 'package:myapp/thuchanh/th_adr/page_profile.dart';
+import 'package:myapp/thuchanh/th_adr/rss/page/page_rss_simple.dart';
 
 class Page_ThucHanh extends StatelessWidget {
   const Page_ThucHanh({super.key});
@@ -22,6 +23,8 @@ class Page_ThucHanh extends StatelessWidget {
                 label: "Drawer", destination: const DrawerExample()),
             _buildButton(context,
                 label: "Ecommerce App", destination: const AppFruitStore()),
+            _buildButton(context,
+                label: "Bao dien tu", destination: const RssApp()),
           ]),
         ),
       ),

@@ -1,5 +1,9 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:myapp/thuchanh/th_adr/commerial_app/models.dart';
 
 // su dung slidedable
@@ -56,6 +60,30 @@ class AppDataController extends GetxController {
     }
     return null;
   }
+
+  int PriceOfItem(int index, List<Counter> lstCounter) {
+    int price = getIdFromCard(gioHang[index])!.gia;
+    int sl = gioHang[index].sl;
+    int sum = price * sl;
+    return sum;
+  }
+}
+
+class Counter extends GetxController {
+  final Rx<int> count;
+  Counter(int c) : count = Rx<int>(c);
+  // static Counter get instance => Get.find<Counter>();
+  void tang() {
+    count.value += 1;
+    update(["item"]);
+  }
+
+  void giam() {
+    if (count > 1) {
+      count.value;
+      update(["item"]);
+    }
+  }
 }
 
 // bindings dùng để quản lý và tạo controller (dependences)
@@ -63,5 +91,6 @@ class AppDataBindings extends Bindings {
   @override
   void dependencies() {
     Get.put(AppDataController());
+    Get.put(Counter);
   }
 }
