@@ -50,14 +50,17 @@ class SinhVienSnapShot {
     return docRef.update(sv.toJson());
   }
 
+  Future<void> xoa() async {
+    return docRef.delete();
+  }
+
   static Future<DocumentReference> addNew(SinhVien sv) {
     return FirebaseFirestore.instance.collection("SinhVien").add(sv.toJson());
   }
 
   static Stream<List<SinhVienSnapShot>> getAll() {
-    var querySnapShot =
-        FirebaseFirestore.instance.collection("SinhVien").snapshots();
-    return querySnapShot.map(
-        (qsn) => qsn.docs.map((e) => SinhVienSnapShot.fromDocSnap(e)).toList());
+    var querySnapShot = FirebaseFirestore.instance.collection("SinhVien").snapshots();
+    return querySnapShot
+        .map((qsn) => qsn.docs.map((docsnap) => SinhVienSnapShot.fromDocSnap(docsnap)).toList());
   }
 }

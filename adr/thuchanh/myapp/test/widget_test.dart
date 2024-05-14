@@ -11,7 +11,7 @@ import 'package:flutter_test/flutter_test.dart';
 // import 'package:myapp/main.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:myapp/trenlop/test2/json_data.dart';
+import 'package:myapp/trenlop/testJson/json_data.dart';
 
 void main() {
   // testWidgets('Counter increments smoke test', (WidgetTester tester) async {

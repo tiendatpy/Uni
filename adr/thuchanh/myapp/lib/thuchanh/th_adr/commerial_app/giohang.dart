@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
+import 'package:myapp/thuchanh/th_adr/commerial_app/FruitStoreHome.dart';
 import 'package:myapp/thuchanh/th_adr/commerial_app/controller.dart';
 
 class QLGioHang extends StatelessWidget {
@@ -44,7 +45,6 @@ class QLGioHang extends StatelessWidget {
                   return ListView.separated(
                     itemCount: controller.slMatHangGH,
                     itemBuilder: (context, index) {
-                      final giohang = controller.gioHang;
                       final ghItem = controller.gioHang[index];
                       final fruit = controller.getIdFromCard(ghItem);
                       if (fruit != null) {
@@ -54,21 +54,18 @@ class QLGioHang extends StatelessWidget {
                             children: [
                               SlidableAction(
                                 onPressed: (context) {
-                                  alert(context, "Thông báo",
-                                      "Tính năng này chưa phát triển");
+                                  Get.to(() => PageChiTiet(f: fruit));
                                 },
                                 backgroundColor: Colors.green,
                                 foregroundColor: Colors.white,
-                                icon: Icons.archive,
-                                label: 'Lưu trữ',
+                                icon: Icons.more,
+                                label: 'Chi tiết',
                               ),
                               SlidableAction(
                                 onPressed: (context) {
-                                  final fruit =
-                                      controller.getIdFromCard(ghItem);
+                                  final fruit = controller.getIdFromCard(ghItem);
                                   controller.xoaItem(fruit!);
-                                  alert(context, "Thông báo",
-                                      "Đã xóa thành công");
+                                  alert(context, "Thông báo", "Đã xóa thành công");
                                 },
                                 backgroundColor: Colors.red,
                                 foregroundColor: Colors.white,
@@ -81,47 +78,38 @@ class QLGioHang extends StatelessWidget {
                             children: [
                               ListTile(
                                 leading: Image.network("${fruit.image}"),
-                                title: Text(fruit.tenSP,
-                                    style: const TextStyle(fontSize: 18)),
-                                trailing: Text("${fruit.gia}",
-                                    style: const TextStyle(fontSize: 15)),
+                                title: Text(fruit.tenSP, style: const TextStyle(fontSize: 18)),
+                                trailing:
+                                    Text("${fruit.gia}", style: const TextStyle(fontSize: 15)),
                               ),
-                              GetBuilder<Counter>(
-                                init: Counter(ghItem.sl),
-                                id: "item",
-                                builder: (controller) {
-                                  final List<Counter> lstCounter = [];
-                                  for (var i = 0; i < giohang.length; i++) {
-                                    lstCounter.add(Counter(ghItem.sl));
-                                  }
-                                  return Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      IconButton(
-                                        onPressed: () {
-                                          lstCounter[index].giam();
-                                          print(lstCounter[index].count);
-                                        },
-                                        icon: const Icon(Icons.remove),
-                                      ),
-                                      Text("${lstCounter[index].count}"),
-                                      IconButton(
-                                        onPressed: () {
-                                          lstCounter[index].tang();
-                                          print(lstCounter[index].count);
-                                        },
-                                        icon: const Icon(Icons.add),
-                                      ),
-                                      const SizedBox(width: 20),
-                                      Text(
-                                        "Tổng: ${AppDataController.instance.PriceOfItem(index, lstCounter)}đ",
-                                        style: const TextStyle(
-                                            color: Colors.red,
-                                            fontWeight: FontWeight.bold),
-                                      )
-                                    ],
-                                  );
-                                },
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  IconButton(
+                                    onPressed: () {
+                                      controller.giam(index);
+                                    },
+                                    icon: const Icon(Icons.remove),
+                                  ),
+                                  Text("${ghItem.sl}",
+                                      style: const TextStyle(fontWeight: FontWeight.bold)),
+                                  IconButton(
+                                    onPressed: () {
+                                      controller.tang(index);
+                                    },
+                                    icon: const Icon(Icons.add),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 20),
+                                    child: Text(
+                                      "Tổng: ${controller.priceOfItem(index)} đ",
+                                      style: const TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.red,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  )
+                                ],
                               )
                             ],
                           ),
@@ -129,11 +117,47 @@ class QLGioHang extends StatelessWidget {
                       }
                       return null;
                     },
-                    separatorBuilder: (context, index) =>
-                        const Divider(thickness: 1.5),
+                    separatorBuilder: (context, index) => const Divider(thickness: 1.5),
                   );
                 },
               ),
+            ),
+            GetBuilder<AppDataController>(
+              init: AppDataController(),
+              id: 'tongtien',
+              builder: (controller) {
+                return Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 100,
+                  color: Colors.white,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          const Text("Thành tiền: ", style: TextStyle(fontSize: 18)),
+                          Text(
+                            "${AppDataController.instance.sumOfPrice()} đ",
+                            style: const TextStyle(
+                                fontSize: 18,
+                                color: Color.fromARGB(255, 86, 52, 125),
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          // alert(context, 'Thông báo', 'Đặt hàng thành công');
+                          Get.back();
+                        },
+                        child: const Text('Đặt hàng', style: TextStyle(fontSize: 17)),
+                      )
+                    ],
+                  ),
+                );
+              },
             )
           ],
         ),
@@ -141,7 +165,7 @@ class QLGioHang extends StatelessWidget {
     );
   }
 
-  Future<dynamic> alert(BuildContext context, String title, String content) {
+  alert(BuildContext context, String title, String content) {
     return showDialog(
       context: context,
       builder: (BuildContext context) {

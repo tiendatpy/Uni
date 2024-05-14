@@ -25,7 +25,6 @@ class _MyFirebaseConnectState extends State<MyFirebaseConnect> {
   @override
   Widget build(BuildContext context) {
     if (loi) {
-      print(123);
       return Container(
         color: Colors.white,
         child: Center(

@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:myapp/trenlop/test2/json_data.dart';
+import 'package:myapp/trenlop/testJson/json_data.dart';
 
 class PagePhotos extends StatelessWidget {
   const PagePhotos({super.key});
