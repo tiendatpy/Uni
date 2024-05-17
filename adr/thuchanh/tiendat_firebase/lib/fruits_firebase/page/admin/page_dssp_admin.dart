@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:tiendat_firebase/connect_db/widget_connet_firebase.dart';
-import 'package:tiendat_firebase/fruits_firebase/model.dart';
+import 'package:tiendat_firebase/fruits_firebase/model/model.dart';
+import 'package:tiendat_firebase/fruits_firebase/page/admin/page_update.dart';
+import 'package:tiendat_firebase/fruits_firebase/page/admin/them_sp.dart.dart';
+import 'package:tiendat_firebase/fruits_firebase/page/helper/storage_image.dart';
 
 class FruitStoreAdmin extends StatelessWidget {
   const FruitStoreAdmin({super.key});
@@ -51,14 +54,21 @@ class PageDSSP_Admin extends StatelessWidget {
                     motion: const ScrollMotion(),
                     children: [
                       SlidableAction(
-                        onPressed: (context) {},
+                        onPressed: (context) async {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => PageUpdate(fs),
+                          ));
+                        },
                         backgroundColor: const Color(0xFF7BC043),
                         foregroundColor: Colors.white,
                         icon: Icons.archive,
                         label: 'Cập nhật',
                       ),
                       SlidableAction(
-                        onPressed: (context) {},
+                        onPressed: (context) async {
+                          await deleteImage(folders: ["Fruit"], fileName: "${fs.fruit.id}.jpg");
+                          await fs.xoa();
+                        },
                         backgroundColor: const Color.fromARGB(255, 207, 3, 3),
                         foregroundColor: Colors.white,
                         icon: Icons.delete,
@@ -101,7 +111,11 @@ class PageDSSP_Admin extends StatelessWidget {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => const PageAddSP(),
+          ));
+        },
         child: const Icon(Icons.add),
       ),
     );

@@ -5,7 +5,9 @@ void main() async {
   List<int> lstInt = lst.map((cd) => cd.length).toList();
   // print(lstInt); //bai 1
   //bai 2
-  lstInt.forEach((e) => {print(e*e)},);
+  lstInt.forEach(
+    (e) => print(e * e),
+  );
   print("Đợi");
   int num = await lateNum();
   if (num % 2 == 0) {
@@ -14,10 +16,7 @@ void main() async {
     print("$num Số lẻ");
   }
   lateNum().then((value) => {
-        if (value % 2 == 0)
-          {print("$value Là số chẵn")}
-        else
-          {print("$value Là số lẻ")}
+        if (value % 2 == 0) {print("$value Là số chẵn")} else {print("$value Là số lẻ")}
       });
   print("hết");
 }

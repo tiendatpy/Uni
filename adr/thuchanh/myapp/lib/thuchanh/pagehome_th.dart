@@ -17,22 +17,17 @@ class Page_ThucHanh extends StatelessWidget {
       body: SingleChildScrollView(
         child: Center(
           child: Column(children: [
-            _buildButton(context,
-                label: "Profile", destination: const PageProfile()),
-            _buildButton(context,
-                label: "Drawer", destination: const DrawerExample()),
-            _buildButton(context,
-                label: "Ecommerce App", destination: const AppFruitStore()),
-            _buildButton(context,
-                label: "Bao dien tu", destination: const RssApp()),
+            _buildButton(context, label: "Profile", destination: const PageProfile()),
+            _buildButton(context, label: "Drawer", destination: const DrawerExample()),
+            _buildButton(context, label: "Ecommerce App", destination: const AppFruitStore()),
+            _buildButton(context, label: "Bao dien tu", destination: const RssApp()),
           ]),
         ),
       ),
     );
   }
 
-  Widget _buildButton(BuildContext context,
-      {required String label, required Widget destination}) {
+  Widget _buildButton(BuildContext context, {required String label, required Widget destination}) {
     double w = MediaQuery.of(context).size.width * 0.75;
     return SizedBox(
       width: w,

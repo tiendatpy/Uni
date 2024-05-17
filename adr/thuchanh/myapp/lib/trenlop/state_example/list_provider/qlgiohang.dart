@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:myapp/trenlop/state_example/list_example/app_state.dart';
+import 'package:myapp/trenlop/state_example/list_provider/app_state.dart';
 import 'package:provider/provider.dart';
 
 class GioHang extends StatelessWidget {
@@ -57,9 +57,7 @@ class GioHang extends StatelessWidget {
                 Text(
                   "$tong.000đ",
                   style: const TextStyle(
-                      color: Colors.amber,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 30),
+                      color: Colors.amber, fontWeight: FontWeight.bold, fontSize: 30),
                 ),
               ],
             )

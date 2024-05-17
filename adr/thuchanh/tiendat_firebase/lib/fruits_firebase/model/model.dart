@@ -12,7 +12,7 @@ class Fruit {
     return <String, dynamic>{
       'id': id,
       'ten': ten,
-      'image': anh,
+      'anh': anh,
       'mota': mota,
       'gia': gia,
     };
@@ -27,6 +27,12 @@ class Fruit {
       gia: map['gia'] as int,
     );
   }
+}
+
+class GH_Item {
+  String idSP;
+  int sl;
+  GH_Item({required this.idSP, required this.sl});
 }
 
 class FruitSnapShot {

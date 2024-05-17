@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:tiendat_firebase/crud_sv/page_sinhvien.dart';
 import 'package:tiendat_firebase/fruits_firebase/page/Firebase_store.dart';
-import 'package:tiendat_firebase/fruits_firebase/page/page_dssp_admin.dart';
+import 'package:tiendat_firebase/fruits_firebase/page/admin/page_dssp_admin.dart';
 
 class Page_Home extends StatelessWidget {
   const Page_Home({super.key});

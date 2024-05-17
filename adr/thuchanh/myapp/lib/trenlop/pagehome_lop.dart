@@ -8,8 +8,10 @@ import 'package:myapp/trenlop/state_example/counter_exam/couter_state.dart';
 import 'package:myapp/trenlop/form_example/page_form_mathang.dart';
 import 'package:myapp/trenlop/getx/get_counter.dart';
 import 'package:myapp/trenlop/state_example/counter_exam/page_counter.dart';
-import 'package:myapp/trenlop/state_example/list_example/giohang_app.dart';
+import 'package:myapp/trenlop/state_example/list_provider/giohang_app.dart';
 import 'package:myapp/trenlop/state_example/list_getX/giohang.dart';
+
+import 'phone/phone.dart';
 
 class Page_lop extends StatelessWidget {
   const Page_lop({super.key});
@@ -24,34 +26,24 @@ class Page_lop extends StatelessWidget {
       body: SingleChildScrollView(
         child: Center(
           child: Column(children: [
+            _buildButton(context, label: "Roter demo", destination: const Page1()),
             _buildButton(context,
-                label: "Roter demo", destination: const Page1()),
-            _buildButton(context,
-                label: "Provider demo",
-                destination: const CounterStateProvider()),
-            _buildButton(context,
-                label: "List trái cây", destination: const GioHangApp()),
-            _buildButton(context,
-                label: "Form", destination: PageFormMatHang()),
-            _buildButton(context,
-                label: "Getx demo", destination: PageGetxCounter()),
-            _buildButton(context,
-                label: "Giỏ hàng getx", destination: GioHangGetX()),
-            _buildButton(context,
-                label: "Simple state getx",
-                destination: const PageSimpleState()),
-            _buildButton(context,
-                label: "Bindings demo", destination: const SimpleStateHome()),
-            _buildButton(context,
-                label: "Json demo", destination: const PagePhotos()),
+                label: "Provider demo", destination: const CounterStateProvider()),
+            _buildButton(context, label: "List trái cây", destination: const GioHangApp()),
+            _buildButton(context, label: "Form", destination: PageFormMatHang()),
+            _buildButton(context, label: "Getx demo", destination: PageGetxCounter()),
+            _buildButton(context, label: "Giỏ hàng getx", destination: GioHangGetX()),
+            _buildButton(context, label: "Simple state getx", destination: const PageSimpleState()),
+            _buildButton(context, label: "Bindings demo", destination: const SimpleStateHome()),
+            _buildButton(context, label: "Json demo", destination: const PagePhotos()),
+            _buildButton(context, label: "Demo Phone", destination: MyPhone()),
           ]),
         ),
       ),
     );
   }
 
-  Widget _buildButton(BuildContext context,
-      {required String label, required Widget destination}) {
+  Widget _buildButton(BuildContext context, {required String label, required Widget destination}) {
     double w = MediaQuery.of(context).size.width * 0.75;
     return SizedBox(
       width: w,
