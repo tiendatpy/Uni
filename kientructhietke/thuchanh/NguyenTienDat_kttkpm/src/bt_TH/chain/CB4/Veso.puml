@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class GiaiThuong{
+    + String tenGiai
+    + List<String> boSo;
+    + GiaiThuong giaiKeTiep(GiaiThuong giaiKeTiep)
+    + void doVeSo(String veSo)
+}
+
+class GiaiThongThuong
+class GiaiCuoi
+
+GiaiThuong <|-- GiaiThongThuong
+GiaiThuong <-- GiaiThongThuong : giaiKeTiep
+GiaiThuong <|-- GiaiCoi
+
+@enduml

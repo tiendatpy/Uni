@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class XepLoai{
+    String tenLoai
+    float diem;
+    + abstract XepLoai loaiCaoHon(XepLoai xl)
+    + abstract String xuLyXepLoai(float diem)
+}
+class XepLoaiChung
+class XepLoaiXS
+
+XepLoai <|-- XepLoaiChung
+XepLoai <|-- XepLoaiXS
+
+XepLoaiChung --> XepLoai : XepLoai xl
+
+@enduml

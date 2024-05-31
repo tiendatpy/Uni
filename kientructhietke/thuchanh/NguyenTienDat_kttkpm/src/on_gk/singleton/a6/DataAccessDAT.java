@@ -41,7 +41,6 @@ public class DataAccessDAT {
     }
 
     public void display(){
-        System.out.println("abc");
         for (var s : lstSP){
             System.out.println(s);
         }

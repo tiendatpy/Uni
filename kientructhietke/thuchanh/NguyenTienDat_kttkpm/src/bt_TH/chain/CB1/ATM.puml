@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class ATM_TheoMenhGia{
+    - int menhGia
+    +{abstract} ATM_TheoMenhGia keTiep(ATM_ThemMenhGia k)
+    + {abstract} void rutTien(int soTien)
+}
+
+ATM_TheoMenhGia <|-- MenhGiaThapNhat
+ATM_TheoMenhGia <|-- MenhGia
+MenhGia --> ATM_TheoMenhGia: keTiep
+
+
+note bottom of MenhGiaThapNhat
+    rutTien(): Tinh số tờ tiền và in ra số tờ
+end note
+
+
+note bottom of MenhGia
+    rutTien():
+    Tính số tờ, Tính số dư
+    Nếu số tờ > 0: in số tờ
+    Nếu số dư > 0: Chuyển so du sang phan keTiep
+end note
+@enduml

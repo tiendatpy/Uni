@@ -8,7 +8,7 @@ public class MainF88 {
         NhanVienF88 gd = new NhanVien("Tiến Đạt4", "Giám đốc",800_000);
         NhanVienF88 ct = new ChuTich("Sơn tùng","Chủ tịch",1_000_000);
         nv.capCaoHon(tv).capCaoHon(tk).capCaoHon(gd).capCaoHon(ct);
-        System.out.println(nv.xuLyKhoanVay(600_000));
+        System.out.println(nv.xuLyKhoanVay(900_000));
         System.out.println(nv.xuLyKhoanVay(2_000_000));
     }
 }

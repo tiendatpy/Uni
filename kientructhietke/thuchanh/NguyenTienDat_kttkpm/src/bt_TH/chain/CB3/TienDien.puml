@@ -1,0 +1,33 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract TienDien {
+    String soBac;
+    int max, min;
+    int gia;
+    + {abstract} TienDien bacCaoHon(TienDien b)
+    + {abstract} int tinhTienDien(int soBac, int gia);
+}
+
+class BacThongThuong{
+
+}
+
+TienDien <|-- BacThongThuong
+TienDien <|-- BacCaoNhat
+TienDien <-- BacThongThuong : bacKe
+
+note bottom of BacThongThuong
+    tinhTienDien():
+    Nếu soKW <= Max
+        return (soKm - min) * gia
+    return (max - min) * gia + tien dien bac ke tiep
+end note
+
+note bottom of BacCaoNhat
+    tinhTienDien():
+    return (soKW - min) * gia
+end note
+
+
+@enduml
