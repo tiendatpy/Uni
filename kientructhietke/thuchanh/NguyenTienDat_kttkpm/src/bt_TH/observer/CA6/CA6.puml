@@ -4,11 +4,15 @@
 class PlayerData{
     int thoiGian, soLuotChoi, diem
 }
-class DashBoard{}
+class DashBoard{
+    PlayerData playerdata
+    void listen(PlayerData player)
+}
 interface PlayerDataListener{
-    void listen(PlayerData playerdata)
+    void listen(PlayerData player)
 }
 
-DashBoard --|> PlayerDataListener
-
+PlayerDataListener <-- DashBoard
+PlayerData o--> PlayerDataListener : listener
+DashBoard --> PlayerData : playerdata
 @enduml

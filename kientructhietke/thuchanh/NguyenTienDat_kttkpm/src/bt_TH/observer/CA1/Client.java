@@ -3,9 +3,9 @@ package bt_TH.observer.CA1;
 import java.util.List;
 
 public class Client implements MyStreamListener<List<MonHoc>>  {
-    MyStream stream;
+    MyStream<List<MonHoc>> stream;
 
-    public Client(MyStream stream) {
+    public Client(MyStream<List<MonHoc>> stream) {
         this.stream = stream;
         this.stream.addListeners(this);
     }
